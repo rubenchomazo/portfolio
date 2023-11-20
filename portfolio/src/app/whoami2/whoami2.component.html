@@ -1,0 +1,217 @@
+<header>
+    <nav class="flex justify-between py-10 m-auto px-10 text-lg font-bold tracking-widest md:items-center">
+        <a href=""><img src="../../assets/img/logo.png" alt="logo" width="28"></a>
+        <div id="menu" *ngIf="showMenu"
+            class="bg-white dark:bg-slate-800 p-7 h-[380px] w-[320px] flex flex-col items-start 
+            justify-around rounded-lg text-dark dark:text-white md:w-full md:py-0 md:h-[50px] md:bg-inherit md:dark:bg-primary ">
+            <ul class="flex h-5/6 flex-col justify-around md:flex-row md:justify-center w-full">
+                <li class="md:px-5 hover:text-sky-600" (click)="navLinks()"><a href="">Who I am</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="navLinks()"><a href="">Experience</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="navLinks()"><a href="">Projects</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="navLinks()"><a href="">Contact me</a></li>
+            </ul>
+        </div>
+        <div class="flex flex-col items-start justify-around">
+            <button id="dark-button" (click)="changeMode()"><i
+                    class="bi bi-moon-stars-fill text-sky-600 text-2xl md:px-5"></i>
+            </button>
+            <button id="menu-button" class="absolute top-10 right-12 md:hidden " (click)="menuHidden()">
+                <span class="br-1 block bg-black dark:bg-white my-2 rounded-md h-[3px] w-[28px]"></span>
+                <span class="br-2 block bg-black dark:bg-white my-2 rounded-md h-[3px] w-[28px]"></span>
+                <span class="br-3 block bg-black dark:bg-white my-2 rounded-md h-[3px] w-[28px]"></span>
+            </button>
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="my-0 flex flex-col lg:flex-row lg:h-[850px]">
+        <div class="p-10 lg:w-[80%] lg:h-[500px] lg:self-center">
+            <h1 class="text-sky-600 dark:text-sky-300 text-2xl font-bold tracking-widest leading-10">Hi, I'm</h1>
+            <p class="py-2 text-3xl font-bold text-slate-600 dark:text-slate-300">Rubén Mazo</p>
+            <p class="text-3xl font-bold text-slate-500 dark:text-slate-600">Full Stack Developer</p>
+            <p class="mt-5 text-lg ">I am a Java developer with over 14 years of
+                experience in software development. I have a strong knowledge
+                of the principles and practices of Java programming, and I am familiar with a variety of frameworks and
+                libraries. I have worked on a variety of projects, including web applications, mobile applications, and
+                enterprise software.</p>
+            <div class="py-6">
+                <a class="pr-2 text-2xl hover:text-sky-600 px-2" href=""><i class="bi bi-twitter"></i></a>
+                <a class="pr-2 text-2xl hover:text-sky-600 px-2" href=""><i class="bi bi-instagram"></i></a>
+                <a class="pr-2 text-2xl hover:text-sky-600 px-2" href=""><i class="bi bi-linkedin"></i></a>
+                <a class="pr-2 text-2xl hover:text-sky-600 px-2" href=""><i class="bi bi-github"></i></a>
+            </div>
+            <div>
+                <button class="border-2 rounded border-sky-500 p-4 w-[250px] text-lg tracking-widest
+                     hover:bg-sky-500 hover:dark:text-slate-900 ease-out duration-300 ">Contract
+                    me</button>
+            </div>
+        </div>
+        <div class="my-10 w-full">
+            <div
+                class="w-[300px] h-[320px] m-auto bg-[url('./assets/img/profile.png')] lg:bg-[url('./assets/img/profile.png')] 
+                    bg-cover rounded-lg lg:w-[100%] lg:h-[100%] lg:bg-center lg:bg-no-repeat lg:bg-[length:617px_840px]">
+            </div>
+        </div>
+    </section>
+    <!-- Experience -->
+    <h2 class="text-3xl text-slate-700 dark:text-white font-bold tracking-widest w-[85%] m-auto text-center pt-8">
+        Experiencia Laboral</h2>
+    <section class="my-12 flex-col w-[84%] m-auto lg:flex-row lg:w-[87%] lg:my-28" id="jobSection">
+        <div class="flex justify-between lg:flex-col lg:w-[20%]">
+            <button type="button" id="link1" (click)="changeJob('job1')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+                lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">Keifitech</button>
+            <button type="button" (click)="changeJob('job2')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">TATA Consultancy Services</button>
+            <button type="button" (click)="changeJob('job3')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">IdeaSolutions</button>
+        </div>
+        <!--Container Job Description-->
+        <div class="my-5 lg:px-10 lg:my-0 lg:max-w-[800px]">
+            <article id="job1" *ngIf="showJob1">
+                <h3>CTO <span class="text-sky-500 font-bold text-lg">Keifitech</span> </h3>
+                <h4 class="text-sm pb-5">Enero 2022 - Presente</h4>
+                <ul>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                </ul>
+            </article>
+            <!--Hidden articeles-->
+            <article id="job2" *ngIf="showJob2">
+                <h3>Technical Lead <span class="text-sky-500 font-bold text-lg">TCS</span> </h3>
+                <h4 class="text-sm pb-5">Agosto 2014 - Enero 2023</h4>
+                <ul>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                </ul>
+            </article>
+            <article id="job3" *ngIf="showJob3">
+                <h3>Java Developer <span class="text-sky-500 font-bold text-lg">IdeaSolutions</span> </h3>
+                <h4 class="text-sm pb-5">Agosto 2012 - Agosto 2014</h4>
+                <ul>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                    <li class="flex items-center py-2">
+                        <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+    <!--Projects Session-->
+    <h3 class="text-3xl text-slate-700 dark:text-white my-5 px-12 font-bold tracking-widest">My last projects</h3>
+    <section class="my-12 flex flex-col items-center justify-center w-[90%] m-auto lg:flex-row">
+        <!-- First project -->
+        <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
+            <div class="m-2">
+                <img src="../../assets/img/coding.jpg" alt="firstProject" class="opacity-80 hover:opacity-100">
+                <h4 class="font-bold my-2">Reverse Proxy</h4>
+                <article class="flex justify-between">
+                    <div class="flex flex-nowrap items-center">
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Proxy</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
+                    </div>
+                    <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+                        <a href=""><i class="bi bi-github px-2"></i></a>
+                        <a href=""><i class="bi bi-eye px-2"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <!-- Second project -->
+        <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
+            <div class="m-2">
+                <img src="../../assets/img/coding.jpg" alt="firstProject" class="opacity-80 hover:opacity-100">
+                <h4 class="font-bold my-2">Integration Java with ELK Suit</h4>
+                <article class="flex justify-between">
+                    <div class="flex flex-nowrap items-center">
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Proxy</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
+                    </div>
+                    <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+                        <a href=""><i class="bi bi-github px-2"></i></a>
+                        <a href=""><i class="bi bi-eye px-2"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <!-- Third project -->
+        <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
+            <div class="m-2">
+                <img src="../../assets/img/coding.jpg" alt="firstProject" class="opacity-80 hover:opacity-100">
+                <h4 class="font-bold my-2">Integration Java with ELK Suit</h4>
+                <article class="flex justify-between">
+                    <div class="flex flex-nowrap items-center">
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Proxy</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
+                    </div>
+                    <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+                        <a href=""><i class="bi bi-github px-2"></i></a>
+                        <a href=""><i class="bi bi-eye px-2"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- Contacts  -->
+    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Contact
+        me</h3>
+    <section class="flex flex-col w-[90%] m-auto">
+        <form action="" class="w-[90%] md:max-w-[600px] m-auto">
+            <div class="py-3">
+                <input type="email" name="email" id="email" placeholder="info@exaple.com"
+                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400" />
+            </div>
+            <div class="py-3">
+                <input type="text" name="naame" id="name" placeholder="Name"
+                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400" />
+            </div>
+            <div>
+                <textarea name="msg" id="msg" rows="5" placeholder="Message"
+                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400"></textarea>
+            </div>
+            <div class="my-3">
+                <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest">Send
+                    Message</button>
+            </div>
+        </form>
+    </section>
+    <!-- Footer -->
+    <footer class="text-center mt-12 mb-5">
+        <p>Design by &#38; Developed by Rubencho.</p>
+        <div class="my-2">
+            <a href="" class="bi bi-twitter hover:text-sky-500"></a>
+            <a href="" class="bi bi-linkedin hover:text-sky-500 px-2"></a>
+            <a href="" class="bi bi-github hover:text-sky-500 px-2"></a>
+        </div>
+    </footer>
+</main>
