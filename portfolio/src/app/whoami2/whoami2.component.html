@@ -1,6 +1,7 @@
 <header>
     <nav class="flex justify-between py-10 m-auto px-10 text-lg font-bold tracking-widest md:items-center">
-        <a href=""><img src="../../assets/img/logo.png" alt="logo" width="28"></a>
+        <i class="bi bi-emoji-laughing text-sky-600 text-2xl top-10" *ngIf="!showMoonFill"></i>
+        <i class="bi bi-emoji-sunglasses text-sky-600 text-2xl top-10" *ngIf="showMoonFill"></i>
         <div id="menu" *ngIf="showMenu"
             class="bg-white dark:bg-slate-800 p-7 h-[380px] w-[320px] flex flex-col items-start 
             justify-around rounded-lg text-dark dark:text-white md:w-full md:py-0 md:h-[50px] md:bg-inherit md:dark:bg-primary ">
@@ -12,8 +13,11 @@
             </ul>
         </div>
         <div class="flex flex-col items-start justify-around">
-            <button id="dark-button" (click)="changeMode()"><i
-                    class="bi bi-moon-stars-fill text-sky-600 text-2xl md:px-5"></i>
+            <button id="dark-button" (click)="changeMode('light')" *ngIf="!showMoonFill">
+                <i class="absolute bi bi-moon-stars-fill text-sky-600 text-2xl top-10 right-4"></i>
+            </button>
+            <button id="dark-button" (click)="changeMode('dark')" *ngIf="showMoonFill">
+                <i class="absolute bi bi-moon-stars text-sky-600 text-2xl top-10 right-4"></i>
             </button>
             <button id="menu-button" class="absolute top-10 right-12 md:hidden " (click)="menuHidden()">
                 <span class="br-1 block bg-black dark:bg-white my-2 rounded-md h-[3px] w-[28px]"></span>
@@ -55,9 +59,9 @@
     </section>
     <!-- Experience -->
     <h2 class="text-3xl text-slate-700 dark:text-white font-bold tracking-widest w-[85%] m-auto text-center pt-8">
-        Experiencia Laboral</h2>
+        Work History</h2>
     <section class="my-12 flex-col w-[84%] m-auto lg:flex-row lg:w-[87%] lg:my-28" id="jobSection">
-        <div class="flex justify-between lg:flex-col lg:w-[20%]">
+        <div class="flex justify-between lg:flex-col lg:w-[100%]">
             <button type="button" id="link1" (click)="changeJob('job1')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
                 lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">Keifitech</button>
             <button type="button" (click)="changeJob('job2')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
@@ -66,59 +70,70 @@
             lg:border-b-0 lg:h-full lg:text-left">IdeaSolutions</button>
         </div>
         <!--Container Job Description-->
-        <div class="my-5 lg:px-10 lg:my-0 lg:max-w-[800px]">
+        <div class="my-5 lg:px-10 lg:my-10 lg:max-w-[800px]">
             <article id="job1" *ngIf="showJob1">
-                <h3>CTO <span class="text-sky-500 font-bold text-lg">Keifitech</span> </h3>
-                <h4 class="text-sm pb-5">Enero 2022 - Presente</h4>
+                <h3>Technical Lead - <span class="text-sky-500 font-bold text-lg">Keifitech, Medellín</span> </h3>
+                <h4 class="text-sm pb-5">Enero 2022 - Present</h4>
                 <ul>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Evaluated and adopted new
+                            technologies to address changing industryneeds.</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Identified value opportunities to
+                            exploit product for maximum businesseffectiveness.</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Supervised architecture, design and
+                            implementation of company-wideplatforms and applications.</p>
                     </li>
                 </ul>
             </article>
             <!--Hidden articeles-->
             <article id="job2" *ngIf="showJob2">
-                <h3>Technical Lead <span class="text-sky-500 font-bold text-lg">TCS</span> </h3>
+                <h3>Technical Lead - <span class="text-sky-500 font-bold text-lg">TATA CONSULTANCY SERVICES,
+                        Medellín</span> </h3>
                 <h4 class="text-sm pb-5">Agosto 2014 - Enero 2023</h4>
                 <ul>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Reviewed project specifications and
+                            designed technology solutions thatmet or exceeded performance expectations.</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Provided direction and guidance to
+                            process improvements and establishedpolicies.</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Promoted experience with
+                            Kubernetes, Docker and Amazon Web Services.
+                            Worked with customers for needs analysis and to determine vendor costs.</p>
                     </li>
                 </ul>
             </article>
             <article id="job3" *ngIf="showJob3">
-                <h3>Java Developer <span class="text-sky-500 font-bold text-lg">IdeaSolutions</span> </h3>
-                <h4 class="text-sm pb-5">Agosto 2012 - Agosto 2014</h4>
+                <h3>Java Developer - <span class="text-sky-500 font-bold text-lg">IdeaSolutions , Medellín</span> </h3>
+                <h4 class="text-sm pb-5">March 2012 - Agosto 2014</h4>
                 <ul>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Participated in requirements
+                            gathering and design developmentmeetings.</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Participated in requirements
+                            gathering and design development meetings.</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">pruebasdasdasdasdd</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Adjusted design parameters to
+                            incorporate new features.</p>
                     </li>
                 </ul>
             </article>
@@ -130,7 +145,7 @@
         <!-- First project -->
         <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
             <div class="m-2">
-                <img src="../../assets/img/coding.jpg" alt="firstProject" class="opacity-80 hover:opacity-100">
+                <img src="../../assets/img/reverse-proxy.png" alt="firstProject" class="opacity-80 hover:opacity-100">
                 <h4 class="font-bold my-2">Reverse Proxy</h4>
                 <article class="flex justify-between">
                     <div class="flex flex-nowrap items-center">
@@ -139,8 +154,8 @@
                         <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
                     </div>
                     <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
-                        <a href=""><i class="bi bi-github px-2"></i></a>
-                        <a href=""><i class="bi bi-eye px-2"></i></a>
+                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-github px-2"></i></a>
+                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-eye px-2"></i></a>
                     </div>
                 </article>
             </div>
@@ -148,17 +163,17 @@
         <!-- Second project -->
         <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
             <div class="m-2">
-                <img src="../../assets/img/coding.jpg" alt="firstProject" class="opacity-80 hover:opacity-100">
+                <img src="../../assets/img/fargate-aws.png" alt="secondProject" class="opacity-80 hover:opacity-100">
                 <h4 class="font-bold my-2">Integration Java with ELK Suit</h4>
                 <article class="flex justify-between">
                     <div class="flex flex-nowrap items-center">
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Proxy</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Docker</span>
                         <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
+                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Fargate</span>
                     </div>
                     <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
-                        <a href=""><i class="bi bi-github px-2"></i></a>
-                        <a href=""><i class="bi bi-eye px-2"></i></a>
+                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-github px-2"></i></a>
+                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-eye px-2"></i></a>
                     </div>
                 </article>
             </div>

@@ -7,27 +7,27 @@ import { Component, HostListener } from '@angular/core';
 })
 export class Whoami2Component {
   showMenu: boolean = true;
+  showMoonFill: boolean = false;
   showJob1: boolean = true;
   showJob2: boolean = false;
   showJob3: boolean = false;
 
-  changeMode() {
-    if (localStorage.getItem('color-theme')) {
-      if (localStorage.getItem('color-theme') == 'light') {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
-      }
-    } else {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
-      }
+  ngOnInit() {
+    localStorage.setItem('color-theme', 'dark');
+    document.documentElement.classList.add('dark');
+  }
+
+  changeMode(mode: string) {
+    if (mode == 'light') {
+      localStorage.setItem('color-theme', 'light');
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      this.showMoonFill = true;
+    } else if (mode == 'dark') {
+      localStorage.setItem('color-theme', 'dark');
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      this.showMoonFill = false;
     }
   }
 
@@ -60,14 +60,11 @@ export class Whoami2Component {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: { target: { innerWidth: any } }) {
-    const menuItems = document.querySelector('#menu');
-    const menuButtonSpans = document.querySelectorAll('#menu-button span');
     let w = event.target.innerWidth;
-    if (w > 768) {
-      menuItems?.classList.add('hidden');
-      menuButtonSpans.forEach((span) => {
-        span.classList.remove('animado');
-      });
+    if (w > 1024) {
+      this.showMenu = true;
+    } else {
+      this.showMenu = false;
     }
   }
 
