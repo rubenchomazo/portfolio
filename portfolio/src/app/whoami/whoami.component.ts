@@ -1,4 +1,8 @@
 import { Component, HostListener } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Notification } from './shared/notification.model';
+import { WhoamiService } from './service/whoami.service';
 
 @Component({
   selector: 'app-whoami',
@@ -11,6 +15,20 @@ export class WhoamiComponent {
   showJob1: boolean = true;
   showJob2: boolean = false;
   showJob3: boolean = false;
+  contactFormControl: any;
+  notificationModel: Notification | undefined;
+
+  constructor(
+    private whoamiService: WhoamiService,
+    private formBuilder: FormBuilder
+  ) {
+    this.contactFormControl = formBuilder.group({
+      name: '',
+      email: '',
+      subject: 'Contact Portfolio',
+      content: '',
+    });
+  }
 
   ngOnInit() {
     localStorage.setItem('color-theme', 'dark');
@@ -34,7 +52,6 @@ export class WhoamiComponent {
   menuHidden() {
     const menuItems = document.querySelector('#menu');
     const menuButtonSpans = document.querySelectorAll('#menu-button span');
-    const links = document.querySelectorAll('#menu a');
     //Open Menu
     menuItems?.classList.toggle('hidden');
     menuButtonSpans.forEach((span) => {
@@ -83,5 +100,15 @@ export class WhoamiComponent {
         'dark:bg-slate-700'
       );
     }
+  }
+
+  sendNotification() {
+    this.notificationModel = new Notification(
+      this.contactFormControl?.value.name,
+      this.contactFormControl?.value.email,
+      'Portfolio Contact me',
+      this.contactFormControl?.value.content
+    );
+    this.whoamiService.sendNotification(this.notificationModel);
   }
 }

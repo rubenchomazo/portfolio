@@ -8,7 +8,8 @@
             <ul class="flex h-5/6 flex-col justify-around md:flex-row md:justify-center w-full">
                 <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-1">Who I am</a></li>
                 <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#jobSection">Experience</a></li>
-                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-3">Projects</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-3">Projects and technical
+                        stack</a></li>
                 <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-4">Contact me</a></li>
             </ul>
         </div>
@@ -145,8 +146,11 @@
         </div>
     </section>
     <!--Projects Session-->
-    <h3 id="section-3" class="text-3xl text-slate-700 dark:text-white my-5 px-12 font-bold tracking-widest">My last
-        projects</h3>
+
+    <h3 id="section-3"
+        class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Projects
+        and technical stack
+    </h3>
     <section class="my-12 flex flex-col items-center justify-center w-[90%] m-auto lg:flex-row">
         <!-- First project -->
         <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
@@ -202,28 +206,230 @@
                 </article>
             </div>
         </div>
-        
+
     </section>
+
+    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">DevOps
+    </h3>
+    <section>
+
+        <!-- This is an example component -->
+        <div class="border-1 rounded-lg m-auto">
+
+            <div id="default-carousel" class="relative" data-carousel="static">
+                <!-- Carousel wrapper -->
+                <div class="overflow-hidden relative h-[900px] rounded-lg">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide7.jpg" class="object-fill h-full w-full" alt="cdci">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide13.jpg" class="object-fill h-full w-full" alt="git">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide24.jpg" class="object-fill h-full w-full" alt="docker">
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide31.jpg" class="object-fill h-full w-full" alt="noops">
+                    </div>
+                </div>
+                <!-- Slider indicators -->
+                <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                        data-carousel-slide-to="3"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                        <span class="hidden">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                        <span class="hidden">Next</span>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Cloud
+    </h3>
+    <section>
+        <div class="border-1 rounded-lg m-auto">
+
+            <div id="default-carousel" class="relative" data-carousel="static">
+                <!-- Carousel wrapper -->
+                <div class="overflow-hidden relative h-[900px] rounded-lg">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide33.jpg" class="object-fill h-full w-full" alt="services">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide14.jpg" class="object-fill h-full w-full" alt="cloudDatabases">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide16.jpg" class="object-fill h-full w-full" alt="monitoring">
+                    </div>
+                </div>
+                <!-- Slider indicators -->
+                <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                        <span class="hidden">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                        <span class="hidden">Next</span>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Data
+        Bases
+    </h3>
+    <section>
+
+        <!-- This is an example component -->
+        <div class="border-1 rounded-lg m-auto">
+
+            <div id="default-carousel" class="relative" data-carousel="static">
+                <!-- Carousel wrapper -->
+                <div class="overflow-hidden relative h-[900px] rounded-lg">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide4.jpg" class="object-fill h-full w-full" alt="databasetypes">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide18.jpg" class="object-fill h-full w-full" alt="sqllite">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="./assets/img/slide11.jpg" class="object-fill h-full w-full" alt="redis">
+                    </div>
+                </div>
+                <!-- Slider indicators -->
+                <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                        <span class="hidden">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                        <span class="hidden">Next</span>
+                    </span>
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
     <!-- Contacts  -->
     <h3 id="section-4"
         class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Contact
         me</h3>
     <section class="flex flex-col w-[90%] m-auto">
-        <form action="" class="w-[90%] md:max-w-[600px] m-auto">
+        <form [formGroup]="contactFormControl" class="w-[90%] md:max-w-[600px] m-auto">
             <div class="py-3">
-                <input type="email" name="email" id="email" placeholder="info@exaple.com"
-                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700" />
+                <input type="email" name="email" id="email" placeholder="info@exaple.com" formControlName="email"
+                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700"
+                    required />
             </div>
             <div class="py-3">
-                <input type="text" name="naame" id="name" placeholder="Name"
-                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700" />
+                <input type="text" name="naame" id="name" placeholder="Name" formControlName="name"
+                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700"
+                    required />
             </div>
             <div>
-                <textarea name="msg" id="msg" rows="5" placeholder="Message"
-                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700"></textarea>
+                <textarea name="msg" id="msg" rows="5" placeholder="Message" formControlName="content"
+                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700 required"></textarea>
             </div>
             <div class="my-3">
-                <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest ">Send
+                <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest "
+                    [disabled]="contactFormControl.form.valid" (click)="sendNotification()">Send
                     Message</button>
             </div>
         </form>
