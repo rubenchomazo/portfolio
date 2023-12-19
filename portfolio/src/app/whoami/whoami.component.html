@@ -148,11 +148,11 @@
     <!--Projects Session-->
 
     <h3 id="section-3"
-        class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
+        class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center ">
         Technical stack
     </h3>
     <section>
-        <div class="flex justify-between lg:flex-col lg:w-[100%]">
+        <div class="flex justify-between lg:flex-col lg:w-[100%] w-[90%]">
             <button type="button" id="linkStack1" (click)="changeStack('stack1')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
                 lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">Programming languages</button>
             <button type="button" (click)="changeStack('stack2')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
@@ -164,7 +164,7 @@
             <button type="button" (click)="changeStack('stack5')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
             lg:border-b-0 lg:h-full lg:text-left">AI</button>
         </div>
-        <div class="mb-10 m-20 justify-center" *ngIf="showStack1">
+        <div class="mb-10 m-10 justify-center" *ngIf="showStack1">
             <div class="flex justify-between p-2">
                 <img src="./assets/img/java.png" class="h-[50px] w-[50px]" alt="java">
                 <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
@@ -202,7 +202,7 @@
             </div>
         </div>
 
-        <div class="mb-10 m-20 justify-center" *ngIf="showStack2">
+        <div class="mb-10 m-10 justify-center" *ngIf="showStack2">
             <!-- bd -->
             <div class="flex justify-between p-2">
                 <img src="./assets/img/oracle.png" class="h-[50px] w-[50px]" alt="oracle">
@@ -248,7 +248,7 @@
             </div>
         </div>
         <!-- Cloud -->
-        <div class="mb-10 m-20 justify-center" *ngIf="showStack3">
+        <div class="mb-10 m-10 justify-center" *ngIf="showStack3">
             <div class="flex justify-between p-2">
                 <img src="./assets/img/amazon-web-services.png" class="h-[50px] w-[50px]" alt="aws">
                 <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
@@ -292,7 +292,7 @@
                 <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">60%</span>
             </div>
         </div>
-        <div class="mb-10 m-20 justify-center" *ngIf="showStack4">
+        <div class="mb-10 m-10 justify-center" *ngIf="showStack4">
             <!-- devops -->
             <div class="flex justify-between p-2">
                 <img src="./assets/img/github.png" class="h-[50px] w-[50px]" alt="github">
@@ -330,7 +330,7 @@
                 <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
             </div>
         </div>
-        <div class="mb-10 m-20 justify-center" *ngIf="showStack5">
+        <div class="mb-10 m-10 justify-center" *ngIf="showStack5">
             <!-- ai -->
             <div class="flex justify-between p-2">
                 <img src="./assets/img/chatgpt.png" class="h-[50px] w-[50px]" alt="openai">
