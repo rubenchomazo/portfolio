@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Notification } from './shared/notification.model';
 import { WhoamiService } from './service/whoami.service';
 
@@ -10,11 +10,18 @@ import { WhoamiService } from './service/whoami.service';
   styleUrls: ['./whoami.component.css'],
 })
 export class WhoamiComponent {
-  showMenu: boolean = true;
+  showMenu: boolean = false;
   showMoonFill: boolean = false;
   showJob1: boolean = true;
   showJob2: boolean = false;
   showJob3: boolean = false;
+  showStack1: boolean = true;
+  showStack2: boolean = false;
+  showStack3: boolean = false;
+  showStack4: boolean = false;
+  showStack5: boolean = false;
+  showSuccess: boolean = false;
+  showError: boolean = false;
   contactFormControl: any;
   notificationModel: Notification | undefined;
 
@@ -23,8 +30,8 @@ export class WhoamiComponent {
     private formBuilder: FormBuilder
   ) {
     this.contactFormControl = formBuilder.group({
-      name: '',
-      email: '',
+      name: ['', Validators.required],
+      email: ['', Validators.email],
       subject: 'Contact Portfolio',
       content: '',
     });
@@ -33,6 +40,12 @@ export class WhoamiComponent {
   ngOnInit() {
     localStorage.setItem('color-theme', 'dark');
     document.documentElement.classList.add('dark');
+    let w = window.innerWidth;
+    if (w > 1024) {
+      this.showMenu = true;
+    } else {
+      this.showMenu = false;
+    }
   }
 
   changeMode(mode: string) {
@@ -85,30 +98,80 @@ export class WhoamiComponent {
       this.showJob1 = false;
       this.showJob2 = true;
       this.showJob3 = false;
-      firstLink?.classList.remove(
-        'border-sky-500',
-        'bg-white',
-        'dark:bg-slate-700'
-      );
+      this.changeFocus(firstLink);
     } else if (jobId == 'job3') {
       this.showJob1 = false;
       this.showJob2 = false;
       this.showJob3 = true;
-      firstLink?.classList.remove(
-        'border-sky-500',
-        'bg-white',
-        'dark:bg-slate-700'
-      );
+      this.changeFocus(firstLink);
     }
   }
 
-  sendNotification() {
-    this.notificationModel = new Notification(
-      this.contactFormControl?.value.name,
-      this.contactFormControl?.value.email,
-      'Portfolio Contact me',
-      this.contactFormControl?.value.content
+  changeStack(stackId: string) {
+    let firstLink = document.querySelector('#linkStack1');
+    if (stackId == 'stack1') {
+      this.showStack1 = true;
+      this.showStack2 = false;
+      this.showStack3 = false;
+      this.showStack4 = false;
+      this.showStack5 = false;
+    } else if (stackId == 'stack2') {
+      this.showStack1 = false;
+      this.showStack2 = true;
+      this.showStack3 = false;
+      this.showStack4 = false;
+      this.showStack5 = false;
+      this.changeFocus(firstLink);
+    } else if (stackId == 'stack3') {
+      this.showStack1 = false;
+      this.showStack2 = false;
+      this.showStack3 = true;
+      this.showStack4 = false;
+      this.showStack5 = false;
+      this.changeFocus(firstLink);
+    } else if (stackId == 'stack4') {
+      this.showStack1 = false;
+      this.showStack2 = false;
+      this.showStack3 = false;
+      this.showStack4 = true;
+      this.showStack5 = false;
+      this.changeFocus(firstLink);
+    } else if (stackId == 'stack5') {
+      this.showStack1 = false;
+      this.showStack2 = false;
+      this.showStack3 = false;
+      this.showStack4 = false;
+      this.showStack5 = true;
+      this.changeFocus(firstLink);
+    }
+  }
+
+  changeFocus(firstLink: Element | null) {
+    firstLink?.classList.remove(
+      'border-sky-500',
+      'bg-white',
+      'dark:bg-slate-700'
     );
-    this.whoamiService.sendNotification(this.notificationModel);
+  }
+
+  sendNotification() {
+    if (
+      (this.contactFormControl.value.name == undefined ||
+        this.contactFormControl.value.name == '') &&
+      (this.contactFormControl.value.email == undefined ||
+        this.contactFormControl.value.email == '')
+    ) {
+      this.showError = true;
+    } else {
+      this.notificationModel = new Notification(
+        this.contactFormControl?.value.name,
+        this.contactFormControl?.value.email,
+        'Portfolio Contact me',
+        this.contactFormControl?.value.content
+      );
+      this.whoamiService.sendNotification(this.notificationModel);
+      this.showError = false;
+      this.showSuccess = true;
+    }
   }
 }

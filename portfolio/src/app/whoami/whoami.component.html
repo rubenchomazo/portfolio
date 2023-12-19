@@ -8,8 +8,8 @@
             <ul class="flex h-5/6 flex-col justify-around md:flex-row md:justify-center w-full">
                 <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-1">Who I am</a></li>
                 <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#jobSection">Experience</a></li>
-                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-3">Projects and technical
-                        stack</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-3">Technical stack and
+                        last projects</a></li>
                 <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-4">Contact me</a></li>
             </ul>
         </div>
@@ -148,74 +148,216 @@
     <!--Projects Session-->
 
     <h3 id="section-3"
-        class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Projects
-        and technical stack
-    </h3>
-    <section class="my-12 flex flex-col items-center justify-center w-[90%] m-auto lg:flex-row">
-        <!-- First project -->
-        <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
-            <div class="m-2">
-                <img src="./assets/img/reverse-proxy.png" alt="firstProject" class="opacity-80 hover:opacity-100">
-                <h4 class="font-bold my-2">Reverse Proxy</h4>
-                <article class="flex justify-between">
-                    <div class="flex flex-nowrap items-center">
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Proxy</span>
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
-                    </div>
-                    <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
-                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-github px-2"></i></a>
-                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-eye px-2"></i></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-        <!-- Second project -->
-        <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
-            <div class="m-2">
-                <img src="./assets/img/fargate-aws.png" alt="secondProject" class="opacity-80 hover:opacity-100">
-                <h4 class="font-bold my-2">Integration Java with ELK Suit</h4>
-                <article class="flex justify-between">
-                    <div class="flex flex-nowrap items-center">
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Docker</span>
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Fargate</span>
-                    </div>
-                    <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
-                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-github px-2"></i></a>
-                        <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-eye px-2"></i></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-        <!-- Third project -->
-        <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
-            <div class="m-2">
-                <img src="./assets/img/fargate-aws.png" alt="firstProject" class="opacity-80 hover:opacity-100">
-                <h4 class="font-bold my-2">Integration Java with ELK Suit</h4>
-                <article class="flex justify-between">
-                    <div class="flex flex-nowrap items-center">
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Proxy</span>
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
-                        <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
-                    </div>
-                    <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
-                        <a href=""><i class="bi bi-github px-2"></i></a>
-                        <a href=""><i class="bi bi-eye px-2"></i></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-
-    </section>
-
-    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">DevOps
+        class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
+        Technical stack
     </h3>
     <section>
+        <div class="flex justify-between lg:flex-col lg:w-[100%]">
+            <button type="button" id="linkStack1" (click)="changeStack('stack1')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+                lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">Programming languages</button>
+            <button type="button" (click)="changeStack('stack2')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">Data Bases</button>
+            <button type="button" (click)="changeStack('stack3')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">Cloud</button>
+            <button type="button" (click)="changeStack('stack4')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">DevOps</button>
+            <button type="button" (click)="changeStack('stack5')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">AI</button>
+        </div>
+        <div class="mb-10 m-20 justify-center" *ngIf="showStack1">
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/java.png" class="h-[50px] w-[50px]" alt="java">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 90%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/angular2.png" class="h-[50px] w-[50px]" alt="angular">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/python.png" class="h-[50px] w-[50px]" alt="python">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/javascript.png" class="h-[50px] w-[50px]" alt="js">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/flutter.png" class="h-[50px] w-[50px]" alt="flutter">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
+            </div>
+        </div>
 
-        <!-- This is an example component -->
-        <div class="border-1 rounded-lg m-auto">
-
+        <div class="mb-10 m-20 justify-center" *ngIf="showStack2">
+            <!-- bd -->
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/oracle.png" class="h-[50px] w-[50px]" alt="oracle">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/mysql.png" class="h-[50px] w-[50px]" alt="mysql">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/postgresql.png" class="h-[50px] w-[50px]" alt="postgresql">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/microsoft-sql-server.png" class="h-[50px] w-[50px]" alt="msssql">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/redis.png" class="h-[50px] w-[50px]" alt="redis">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 75%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">75%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/mongodb.png" class="h-[50px] w-[50px]" alt="mongo">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 75%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">75%</span>
+            </div>
+        </div>
+        <!-- Cloud -->
+        <div class="mb-10 m-20 justify-center" *ngIf="showStack3">
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/amazon-web-services.png" class="h-[50px] w-[50px]" alt="aws">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/azure.png" class="h-[50px] w-[50px]" alt="azure">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 73%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">73%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/google-cloud-platform.png" class="h-[50px] w-[50px]" alt="gcp">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/openshift.png" class="h-[50px] w-[50px]" alt="openshift">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/icons8-ibm-96.png" class="h-[50px] w-[50px]" alt="ibm">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/heroku.png" class="h-[50px] w-[50px]" alt="heroku">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 60%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">60%</span>
+            </div>
+        </div>
+        <div class="mb-10 m-20 justify-center" *ngIf="showStack4">
+            <!-- devops -->
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/github.png" class="h-[50px] w-[50px]" alt="github">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/gitlab.png" class="h-[50px] w-[50px]" alt="gitlab">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/docker.png" class="h-[50px] w-[50px]" alt="docker">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/jenkins.png" class="h-[50px] w-[50px]" alt="jenkins">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/azure-devops.png" class="h-[50px] w-[50px]" alt="azuredev">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
+            </div>
+        </div>
+        <div class="mb-10 m-20 justify-center" *ngIf="showStack5">
+            <!-- ai -->
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/chatgpt.png" class="h-[50px] w-[50px]" alt="openai">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/github-copilot.svg" class="h-[50px] w-[50px]" alt="gitcopilot">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
+            </div>
+            <div class="flex justify-between p-2">
+                <img src="./assets/img/windows-copilot.png" class="h-[50px] w-[50px]" alt="wincopilot">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
+                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 60%"></div>
+                </div>
+                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">60%</span>
+            </div>
+        </div>
+        <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
+            Solutions
+        </h3>
+        <div class="border-1 rounded-lg m-auto" id="stack2">
             <div id="default-carousel" class="relative" data-carousel="static">
                 <!-- Carousel wrapper -->
                 <div class="overflow-hidden relative h-[900px] rounded-lg">
@@ -235,132 +377,27 @@
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="./assets/img/slide31.jpg" class="object-fill h-full w-full" alt="noops">
                     </div>
-                </div>
-                <!-- Slider indicators -->
-                <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1"
-                        data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                        data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                        data-carousel-slide-to="2"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-                        data-carousel-slide-to="3"></button>
-                </div>
-                <!-- Slider controls -->
-                <button type="button"
-                    class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                    data-carousel-prev>
-                    <span
-                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                            </path>
-                        </svg>
-                        <span class="hidden">Previous</span>
-                    </span>
-                </button>
-                <button type="button"
-                    class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                    data-carousel-next>
-                    <span
-                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
-                        </svg>
-                        <span class="hidden">Next</span>
-                    </span>
-                </button>
-            </div>
-
-        </div>
-
-    </section>
-
-    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Cloud
-    </h3>
-    <section>
-        <div class="border-1 rounded-lg m-auto">
-
-            <div id="default-carousel" class="relative" data-carousel="static">
-                <!-- Carousel wrapper -->
-                <div class="overflow-hidden relative h-[900px] rounded-lg">
-                    <!-- Item 1 -->
+                    <!-- Item 5 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="./assets/img/slide33.jpg" class="object-fill h-full w-full" alt="services">
                     </div>
-                    <!-- Item 2 -->
+                    <!-- Item 6 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="./assets/img/slide14.jpg" class="object-fill h-full w-full" alt="cloudDatabases">
                     </div>
-                    <!-- Item 3 -->
+                    <!-- Item 7 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="./assets/img/slide16.jpg" class="object-fill h-full w-full" alt="monitoring">
                     </div>
-                </div>
-                <!-- Slider indicators -->
-                <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1"
-                        data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                        data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                        data-carousel-slide-to="2"></button>
-                </div>
-                <!-- Slider controls -->
-                <button type="button"
-                    class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                    data-carousel-prev>
-                    <span
-                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                            </path>
-                        </svg>
-                        <span class="hidden">Previous</span>
-                    </span>
-                </button>
-                <button type="button"
-                    class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-                    data-carousel-next>
-                    <span
-                        class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
-                        </svg>
-                        <span class="hidden">Next</span>
-                    </span>
-                </button>
-            </div>
-
-        </div>
-    </section>
-    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Data
-        Bases
-    </h3>
-    <section>
-
-        <!-- This is an example component -->
-        <div class="border-1 rounded-lg m-auto">
-
-            <div id="default-carousel" class="relative" data-carousel="static">
-                <!-- Carousel wrapper -->
-                <div class="overflow-hidden relative h-[900px] rounded-lg">
-                    <!-- Item 1 -->
+                    <!-- Item 8 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="./assets/img/slide4.jpg" class="object-fill h-full w-full" alt="databasetypes">
                     </div>
-                    <!-- Item 2 -->
+                    <!-- Item 9 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="./assets/img/slide18.jpg" class="object-fill h-full w-full" alt="sqllite">
                     </div>
-                    <!-- Item 3 -->
+                    <!-- Item 10 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="./assets/img/slide11.jpg" class="object-fill h-full w-full" alt="redis">
                     </div>
@@ -373,6 +410,20 @@
                         data-carousel-slide-to="1"></button>
                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
                         data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                        data-carousel-slide-to="3"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                        data-carousel-slide-to="4"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 6"
+                        data-carousel-slide-to="5"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 7"
+                        data-carousel-slide-to="6"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 8"
+                        data-carousel-slide-to="7"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 9"
+                        data-carousel-slide-to="8"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 10"
+                        data-carousel-slide-to="9"></button>
                 </div>
                 <!-- Slider controls -->
                 <button type="button"
@@ -402,9 +453,87 @@
                     </span>
                 </button>
             </div>
-
         </div>
-
+        <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
+            Last projects
+        </h3>
+        <div class="my-12 flex flex-col items-center justify-center w-[500px] m-auto lg:flex-col">
+            <!-- First project -->
+            <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
+                <div class="m-2">
+                    <img src="./assets/img/reverse-proxy.png" alt="firstProject" class="opacity-80 hover:opacity-100">
+                    <h4 class="font-bold my-2">Reverse Proxy</h4>
+                    <article class="flex justify-between">
+                        <div class="flex flex-nowrap items-center">
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Proxy</span>
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
+                        </div>
+                        <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+                            <a href="https://github.com/rubenchomazo/reverse-proxy"><i
+                                    class="bi bi-github px-2"></i></a>
+                            <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-eye px-2"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <!-- Second project -->
+            <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
+                <div class="m-2">
+                    <img src="./assets/img/fargate-aws.png" alt="secondProject" class="opacity-80 hover:opacity-100">
+                    <h4 class="font-bold my-2">Integration Java with ELK Suit</h4>
+                    <article class="flex justify-between">
+                        <div class="flex flex-nowrap items-center">
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Docker</span>
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Fargate</span>
+                        </div>
+                        <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+                            <a href="https://github.com/rubenchomazo/reverse-proxy"><i
+                                    class="bi bi-github px-2"></i></a>
+                            <a href="https://github.com/rubenchomazo/reverse-proxy"><i class="bi bi-eye px-2"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <!-- Third project -->
+            <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
+                <div class="m-2">
+                    <img src="./assets/img/openaifondo.jpg" alt="firstProject" class="opacity-80 hover:opacity-100">
+                    <h4 class="font-bold my-2">GPT Console</h4>
+                    <article class="flex justify-between">
+                        <div class="flex flex-nowrap items-center">
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Python</span>
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">OpenIA</span>
+                        </div>
+                        <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+                            <a href="https://github.com/rubenchomazo/gpt-console"><i class="bi bi-github px-2"></i></a>
+                            <a href="https://github.com/rubenchomazo/gpt-console"><i class="bi bi-eye px-2"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
+                <div class="m-2">
+                    <img src="./assets/img/angular-calculator.png" alt="firstProject"
+                        class="opacity-80 hover:opacity-100">
+                    <h4 class="font-bold my-2">Angular Calculator AWS</h4>
+                    <article class="flex justify-between">
+                        <div class="flex flex-nowrap items-center">
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">AWS</span>
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Angular</span>
+                            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Github Actions</span>
+                        </div>
+                        <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+                            <a href="https://github.com/rubenchomazo/appgate-technical-test-front"><i
+                                    class="bi bi-github px-2"></i></a>
+                            <a href="https://github.com/rubenchomazo/appgate-technical-test-front"><i
+                                    class="bi bi-eye px-2"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Contacts  -->
@@ -415,8 +544,7 @@
         <form [formGroup]="contactFormControl" class="w-[90%] md:max-w-[600px] m-auto">
             <div class="py-3">
                 <input type="email" name="email" id="email" placeholder="info@exaple.com" formControlName="email"
-                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700"
-                    required />
+                    class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700" />
             </div>
             <div class="py-3">
                 <input type="text" name="naame" id="name" placeholder="Name" formControlName="name"
@@ -428,9 +556,35 @@
                     class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700 required"></textarea>
             </div>
             <div class="my-3">
-                <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest "
-                    [disabled]="contactFormControl.form.valid" (click)="sendNotification()">Send
+                <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest hover:bg-sky-300"
+                    [disabled]="!contactFormControl.valid" (click)="sendNotification()">Send
                     Message</button>
+            </div>
+            <div class="bg-red-500 border-t-4 bg-red-500 rounded-b text-slate-700 dark:text-white px-4 py-3 shadow-md"
+                role="alert" *ngIf="!contactFormControl.valid && showError">
+                <div class="flex">
+                    <div class="py-1"><svg class="fill-current h-6 w-6 text-slate-700 dark:text-white mr-4"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path
+                                d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                        </svg></div>
+                    <div>
+                        <p class="font-bold">Error - Be sure to fill in the form correctly</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-green-500 border-t-4 border-green-500 rounded-b text-slate-700 dark:text-white px-4 py-3 shadow-md"
+                role="alert" *ngIf="showSuccess">
+                <div class="flex">
+                    <div class="py-1"><svg class="fill-current h-6 w-6 text-slate-700 dark:text-white mr-4"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path
+                                d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                        </svg></div>
+                    <div>
+                        <p class="font-bold">Send info - Success</p>
+                    </div>
+                </div>
             </div>
         </form>
     </section>
