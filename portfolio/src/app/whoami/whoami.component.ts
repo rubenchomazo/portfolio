@@ -1,8 +1,7 @@
 import { Component, HostListener } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Notification } from './shared/notification.model';
+import { FormBuilder, Validators } from '@angular/forms';
 import { WhoamiService } from './service/whoami.service';
+import { Notification } from './shared/notification.model';
 
 @Component({
   selector: 'app-whoami',
