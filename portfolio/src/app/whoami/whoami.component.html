@@ -6,14 +6,16 @@
             class="bg-white dark:bg-slate-800 p-7 h-[380px] w-[320px] flex flex-col items-start 
             justify-around rounded-lg text-dark dark:text-white md:w-full md:py-0 md:h-[50px] md:bg-inherit md:dark:bg-primary ">
             <ul class="flex h-5/6 flex-col justify-around md:flex-row md:justify-center w-full">
-                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-1">Who I am</a></li>
-                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#jobSection">Experience</a></li>
-                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-3">Technical stack and
-                        last projects</a></li>
-                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-4">Contact me</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-1">{{ t('who') }}</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#jobSection">{{ t('experience') }}</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-3">{{ t('stackNav') }}</a></li>
+                <li class="md:px-5 hover:text-sky-600" (click)="menuShow()"><a href="#section-4">{{ t('contact') }}</a></li>
             </ul>
         </div>
         <div class="flex flex-col items-start justify-around">
+            <button type="button" class="language-toggle" (click)="toggleLanguage()" [attr.aria-label]="language === 'en' ? 'Cambiar a español' : 'Switch to English'">
+                {{ language === 'en' ? 'ES' : 'EN' }}
+            </button>
             <button id="dark-button" (click)="changeMode('light')" *ngIf="!showMoonFill">
                 <i class="absolute bi bi-moon-stars-fill text-sky-600 text-2xl top-10 right-4"></i>
             </button>
@@ -28,17 +30,22 @@
         </div>
     </nav>
 </header>
+<div class="scroll-progress" aria-hidden="true">
+    <span [style.width.%]="scrollProgress"></span>
+</div>
 <main>
-    <section id="section-1" class="my-0 flex flex-col lg:flex-row lg:h-[850px]">
+    <section id="section-1" class="scroll-reveal my-0 flex flex-col lg:flex-row lg:h-[850px]">
         <div class="p-10 lg:w-[80%] lg:h-[500px] lg:self-center">
-            <h1 class="text-sky-600 dark:text-sky-300 text-2xl font-bold tracking-widest leading-10">Hi, I'm</h1>
+            <h1 class="text-sky-600 dark:text-sky-300 text-2xl font-bold tracking-widest leading-10">{{ t('hi') }}</h1>
             <p class="py-2 text-3xl font-bold text-slate-600 dark:text-slate-300">Rubén Mazo</p>
-            <p class="text-3xl font-bold text-slate-500 dark:text-slate-600">Full Stack Developer</p>
-            <p class="mt-5 text-lg ">I am a Java developer with over 14 years of
-                experience in software development. I have a strong knowledge
-                of the principles and practices of Java programming, and I am familiar with a variety of frameworks and
-                libraries. I have worked on a variety of projects, including web applications, mobile applications, and
-                enterprise software.</p>
+            <p class="text-3xl font-bold text-slate-500 dark:text-slate-600">{{ t('role') }}</p>
+            <p class="mt-5 text-lg ">{{ t('intro') }}</p>
+            <div class="profile-highlights" [attr.aria-label]="t('focusLabel')">
+                <span>{{ t('focus1') }}</span>
+                <span>{{ t('focus2') }}</span>
+                <span>{{ t('focus3') }}</span>
+                <span>{{ t('focus4') }}</span>
+            </div>
             <div class="py-6">
                 <a class="pr-2 text-2xl hover:text-sky-600 px-2" href="https://twitter.com/RubnMazo"><i
                         class="bi bi-twitter"></i></a>
@@ -56,296 +63,253 @@
             <div>
                 <a href="#section-4">
                     <button class="border-2 rounded border-sky-500 p-4 w-[250px] text-lg tracking-widest
-                     hover:bg-sky-500 hover:dark:text-slate-900 ease-out duration-300 ">Contact me</button></a>
+                     hover:bg-sky-500 hover:dark:text-slate-900 ease-out duration-300 ">{{ t('contactButton') }}</button></a>
             </div>
         </div>
-        <div class="my-10 w-full">
+        <div class="profile-stage my-10 w-full">
             <div
-                class="w-[300px] h-[320px] m-auto bg-[url('./assets/img/profile.png')] lg:bg-[url('./assets/img/profile.png')] 
+                class="profile-portrait w-[300px] h-[320px] m-auto bg-[url('./assets/img/profile.png')] lg:bg-[url('./assets/img/profile.png')] 
                     bg-cover rounded-lg lg:w-[100%] lg:h-[100%] lg:bg-center lg:bg-no-repeat lg:bg-[length:617px_840px]">
+            </div>
+            <div class="retro-arcade" aria-hidden="true">
+                <span class="retro-pixel retro-pixel-one"></span>
+                <span class="retro-pixel retro-pixel-two"></span>
+                <span class="retro-pixel retro-pixel-three"></span>
+                <div class="retro-screen">
+                    <span class="retro-label">PLAYER_01</span>
+                    <strong>ONLINE<span class="retro-cursor">_</span></strong>
+                </div>
+                <span class="retro-coin">+</span>
             </div>
         </div>
     </section>
     <!-- Experience -->
-    <h2 class="text-3xl text-slate-700 dark:text-white font-bold tracking-widest w-[85%] m-auto text-center pt-8"
+    <h2 class="scroll-reveal text-3xl text-slate-700 dark:text-white font-bold tracking-widest w-[85%] m-auto text-center pt-8"
         id="jobSection">
-        Work History</h2>
-    <section class="my-12 flex-col w-[84%] m-auto lg:flex-row lg:w-[87%] lg:my-28">
+        {{ t('work') }}</h2>
+    <section class="experience-section scroll-reveal my-12 flex-col w-[84%] m-auto lg:flex-row lg:w-[87%] lg:my-28">
         <div class="flex justify-between lg:flex-col lg:w-[100%]">
             <button type="button" id="link1" (click)="changeJob('job1')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-                lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">Keifitech</button>
+                lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">Mercado Libre</button>
             <button type="button" (click)="changeJob('job2')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-            lg:border-b-0 lg:h-full lg:text-left">TATA Consultancy Services</button>
+            lg:border-b-0 lg:h-full lg:text-left">Keifi Technologies</button>
             <button type="button" (click)="changeJob('job3')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-            lg:border-b-0 lg:h-full lg:text-left">IdeaSolutions</button>
+            lg:border-b-0 lg:h-full lg:text-left">TATA Consultancy Services</button>
+            <button type="button" (click)="changeJob('job4')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">IdeaSolutions.co</button>
         </div>
         <!--Container Job Description-->
         <div class="my-5 lg:px-10 lg:my-10 lg:max-w-[800px]">
             <article id="job1" *ngIf="showJob1">
-                <h3>Technical Lead - <span class="text-sky-500 font-bold text-lg">Keifitech, Medellín</span> </h3>
-                <h4 class="text-sm pb-5">January 2023 - January 2024</h4>
+                <div class="experience-signal"><div class="experience-signal-label"><span class="signal-dot"></span><span>{{ t('careerTimeline') }}</span></div><div class="experience-signal-meta"><span>{{ t('platformEngineering') }}</span><em class="experience-status active">{{ t('activeRole') }}</em><strong>01 / 04</strong></div></div>
+                <div class="experience-company"><img src="https://www.mercadolibre.com/favicon.ico" alt="Mercado Libre logo"><div><h3>{{ t('srEngineer') }} - <span class="text-sky-500 font-bold text-lg">Mercado Libre</span> </h3></div></div>
+                <h4 class="text-sm pb-5">{{ t('mercadoDate') }}</h4>
+                <div class="experience-stack"><span>JAVA</span><span>SPRING BOOT</span><span>AWS</span><span>DISTRIBUTED SYSTEMS</span></div>
                 <ul>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Evaluated and adopted new
-                            technologies to address changing industry needs.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('meli1') }}</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Identified value opportunities to
-                            exploit product for maximum business effectiveness.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('meli2') }}</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Supervised architecture, design and
-                            implementation of company-wideplatforms and applications.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('meli3') }}</p>
                     </li>
                 </ul>
             </article>
             <!--Hidden articeles-->
             <article id="job2" *ngIf="showJob2">
-                <h3>Technical Lead - <span class="text-sky-500 font-bold text-lg">TATA CONSULTANCY SERVICES,
-                        Medellín</span> </h3>
-                <h4 class="text-sm pb-5">August 2014 - January 2023</h4>
+                <div class="experience-signal"><div class="experience-signal-label"><span class="signal-dot"></span><span>{{ t('careerTimeline') }}</span></div><div class="experience-signal-meta"><span>{{ t('techLeadership') }}</span><em class="experience-status">{{ t('completedRole') }}</em><strong>02 / 04</strong></div></div>
+                <div class="experience-company"><img src="https://media.licdn.com/dms/image/v2/C4E0BAQFd9ImVQHyMbA/company-logo_100_100/company-logo_100_100/0/1630582790135/keifi_technologies_logo?e=1793232000&v=beta&t=mGJmAlJbOYObUTueHVlzEBzXTRQTf9JnrOj-eAGIp1c" alt="Keifi Technologies logo"><div><h3>{{ t('cto') }} - <span class="text-sky-500 font-bold text-lg">Keifi Technologies</span> </h3></div></div>
+                <h4 class="text-sm pb-5">{{ t('keifiCtoDate') }}</h4>
+                <div class="experience-stack"><span>ANGULAR</span><span>TAILWIND</span><span>ARCHITECTURE</span><span>PRODUCT</span></div>
                 <ul>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Reviewed project specifications and
-                            designed technology solutions that met or exceeded performance expectations.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('cto1') }}</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Provided direction and guidance to
-                            process improvements and established policies.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('cto2') }}</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Promoted experience with
-                            Kubernetes, Docker and Amazon Web Services.
-                            Worked with customers for needs analysis and to determine vendor costs.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('cto3') }}</p>
                     </li>
                 </ul>
             </article>
             <article id="job3" *ngIf="showJob3">
-                <h3>Java Developer - <span class="text-sky-500 font-bold text-lg">IdeaSolutions , Medellín</span> </h3>
-                <h4 class="text-sm pb-5">March 2012 - August 2014</h4>
+                <div class="experience-signal"><div class="experience-signal-label"><span class="signal-dot"></span><span>{{ t('careerTimeline') }}</span></div><div class="experience-signal-meta"><span>{{ t('fullStackDelivery') }}</span><em class="experience-status">{{ t('completedRole') }}</em><strong>03 / 04</strong></div></div>
+                <div class="experience-company"><img src="https://www.tcs.com/content/dam/global-tcs/en/images/who-we-are/media-kit/TCS-logo-black-CMYK.svg" alt="Tata Consultancy Services logo"><div><h3>{{ t('technicalLead') }} - <span class="text-sky-500 font-bold text-lg">TATA Consultancy Services, Medellín</span> </h3></div></div>
+                <h4 class="text-sm pb-5">{{ t('tataDate') }}</h4>
+                <div class="experience-stack"><span>JAVA</span><span>ANGULAR</span><span>AWS</span><span>DEVOPS</span></div>
                 <ul>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Participated in requirements
-                            gathering and design developmentmeetings.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('tata1') }}</p>
                     </li>
                     <li class="flex items-center py-2">
                         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
-                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">Adjusted design parameters to
-                            incorporate new features.</p>
+                        <p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('tata2') }}</p>
                     </li>
                 </ul>
+            </article>
+            <article id="job4" *ngIf="showJob4">
+                <div class="experience-signal"><div class="experience-signal-label"><span class="signal-dot"></span><span>{{ t('careerTimeline') }}</span></div><div class="experience-signal-meta"><span>{{ t('javaEnterprise') }}</span><em class="experience-status">{{ t('completedRole') }}</em><strong>04 / 04</strong></div></div>
+                <div class="experience-company"><img src="https://ideasolutions.co/favicon.ico" alt="IdeaSolutions logo"><div><h3>{{ t('javaDeveloper') }} - <span class="text-sky-500 font-bold text-lg">IdeaSolutions.co, Medellín</span> </h3></div></div>
+                <h4 class="text-sm pb-5">{{ t('ideaDate') }}</h4>
+                <div class="experience-stack"><span>JAVA EE</span><span>SPRING</span><span>HIBERNATE</span><span>ORACLE</span></div>
+                <ul>
+                    <li class="flex items-center py-2"><span class="pr-2 text-sky-500 font-black">&#9655;</span><p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('idea1') }}</p></li>
+                    <li class="flex items-center py-2"><span class="pr-2 text-sky-500 font-black">&#9655;</span><p class="text-stone-900 dark:text-cyan-50 font-normal px-5">{{ t('idea2') }}</p></li>
+                </ul>
+                <p class="mt-5 px-5 text-sm text-slate-500 dark:text-slate-400">{{ t('earlierRole') }}</p>
             </article>
         </div>
     </section>
     <!--Projects Session-->
 
     <h3 id="section-3"
-        class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center ">
-        Technical stack
+        class="scroll-reveal text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center ">
+        {{ t('technicalStack') }}
     </h3>
-    <section>
+    <section class="scroll-reveal">
         <div class="flex justify-between lg:flex-col lg:w-[100%] w-[70%]">
-            <button type="button" id="linkStack1" (click)="changeStack('stack1')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-                lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">Programming languages</button>
+            <button type="button" id="linkStack1" (click)="changeStack('stack5')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+                lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">{{ t('ai') }}</button>
+            <button type="button" (click)="changeStack('stack1')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">{{ t('programming') }}</button>
             <button type="button" (click)="changeStack('stack2')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-            lg:border-b-0 lg:h-full lg:text-left">Data Bases</button>
+            lg:border-b-0 lg:h-full lg:text-left">{{ t('databases') }}</button>
             <button type="button" (click)="changeStack('stack3')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-            lg:border-b-0 lg:h-full lg:text-left">Cloud</button>
+            lg:border-b-0 lg:h-full lg:text-left">{{ t('cloud') }}</button>
             <button type="button" (click)="changeStack('stack4')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-            lg:border-b-0 lg:h-full lg:text-left">DevOps</button>
-            <button type="button" (click)="changeStack('stack5')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
-            lg:border-b-0 lg:h-full lg:text-left">AI</button>
+            lg:border-b-0 lg:h-full lg:text-left">{{ t('devops') }}</button>
+            <button type="button" (click)="changeStack('stack6')" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:border-sky-500 focus:bg-white focus:dark:bg-slate-700 lg:border-l-2
+            lg:border-b-0 lg:h-full lg:text-left">{{ t('observability') }}</button>
         </div>
         <div class="mb-10 m-10 justify-center" *ngIf="showStack1">
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/java.png" class="h-[50px] w-[50px]" alt="java">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 90%"></div>
+            <div class="stack-toolkit">
+                <h4>{{ t('programming') }}</h4>
+                <p>{{ t('programmingText') }}</p>
+                <div class="code-lab" aria-label="Programming animation">
+                    <div class="code-lab-header"><span></span><span></span><span></span><strong>engineering.lab</strong><em>RUNNING</em></div>
+                    <div class="code-lab-body">
+                        <span class="code-line"><b>01</b><i class="code-keyword">const</i> platform = <i class="code-value">"cloud-native"</i>;</span>
+                        <span class="code-line"><b>02</b><i class="code-keyword">func</i> <i class="code-function">Build</i>() &#123;</span>
+                        <span class="code-line code-indent"><b>03</b>return <i class="code-value">ReliableSystems</i>()</span>
+                        <span class="code-line"><b>04</b>&#125;</span>
+                        <span class="code-line"><b>05</b><i class="code-keyword">deploy</i>(Java, TypeScript, Go)<i class="code-cursor">▋</i></span>
+                    </div>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/angular2.png" class="h-[50px] w-[50px]" alt="angular">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
+                <div class="ai-toolkit-grid">
+                    <article class="ai-tool-card"><img src="./assets/img/java.png" alt="Java"><span>Java & Spring</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/angular2.png" alt="Angular"><span>Angular & TypeScript</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/python.png" alt="Python"><span>Python</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/javascript.png" alt="JavaScript"><span>JavaScript & Node.js</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/flutter.png" alt="Flutter"><span>Flutter</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/go.svg" alt="Go"><span>Go</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/android.svg" alt="Android"><span>Android</span></article>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/python.png" class="h-[50px] w-[50px]" alt="python">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/javascript.png" class="h-[50px] w-[50px]" alt="js">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/flutter.png" class="h-[50px] w-[50px]" alt="flutter">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
             </div>
         </div>
 
         <div class="mb-10 m-10 justify-center" *ngIf="showStack2">
-            <!-- bd -->
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/oracle.png" class="h-[50px] w-[50px]" alt="oracle">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+            <div class="stack-toolkit">
+                <h4>{{ t('databases') }}</h4>
+                <p>{{ t('databasesText') }}</p>
+                <div class="database-flow" aria-label="Database animation">
+                    <div class="database-query"><span>QUERY</span><strong>SELECT * FROM systems</strong><i class="data-cursor">▋</i></div>
+                    <div class="database-track"><i></i><i></i><i></i></div>
+                    <div class="database-nodes"><span>SQL</span><span>NO SQL</span><span>CACHE</span></div>
+                    <div class="database-status"><em>READ</em><b>●</b><em>WRITE</em><b>●</b><em>SYNC</em></div>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/mysql.png" class="h-[50px] w-[50px]" alt="mysql">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
+                <div class="ai-toolkit-grid">
+                    <article class="ai-tool-card"><img src="./assets/img/oracle.png" alt="Oracle"><span>Oracle</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/mysql.png" alt="MySQL"><span>MySQL</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/postgresql.png" alt="PostgreSQL"><span>PostgreSQL</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/microsoft-sql-server.png" alt="Microsoft SQL Server"><span>SQL Server</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/redis.png" alt="Redis"><span>Redis</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/mongodb.png" alt="MongoDB"><span>MongoDB</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/bigquery.svg" alt="Google BigQuery"><span>BigQuery</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/dynamodb.svg" alt="Amazon DynamoDB"><span>DynamoDB</span></article>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/postgresql.png" class="h-[50px] w-[50px]" alt="postgresql">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/microsoft-sql-server.png" class="h-[50px] w-[50px]" alt="msssql">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 85%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">85%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/redis.png" class="h-[50px] w-[50px]" alt="redis">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 75%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">75%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/mongodb.png" class="h-[50px] w-[50px]" alt="mongo">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 75%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">75%</span>
             </div>
         </div>
         <!-- Cloud -->
         <div class="mb-10 m-10 justify-center" *ngIf="showStack3">
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/amazon-web-services.png" class="h-[50px] w-[50px]" alt="aws">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
+            <div class="stack-toolkit">
+                <h4>{{ t('cloud') }}</h4>
+                <p>{{ t('cloudText') }}</p>
+                <div class="cloud-architecture" aria-label="Cloud architecture animation">
+                    <div class="cloud-client">CLIENT</div>
+                    <div class="cloud-connector"><i></i><i></i><i></i></div>
+                    <div class="cloud-core"><span>API</span><strong>☁</strong><em>ROUTER</em></div>
+                    <div class="cloud-services"><span>LAMBDA</span><span>QUEUE</span><span>STORAGE</span></div>
+                    <div class="cloud-packet">●</div>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/azure.png" class="h-[50px] w-[50px]" alt="azure">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 73%"></div>
+                <div class="ai-toolkit-grid">
+                    <article class="ai-tool-card"><img src="./assets/img/amazon-web-services.png" alt="AWS"><span>AWS</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/azure.png" alt="Azure"><span>Azure</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/google-cloud-platform.png" alt="Google Cloud"><span>Google Cloud</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/openshift.png" alt="OpenShift"><span>OpenShift</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/icons8-ibm-96.png" alt="IBM Cloud"><span>IBM Cloud</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/heroku.png" alt="Heroku"><span>Heroku</span></article>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">73%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/google-cloud-platform.png" class="h-[50px] w-[50px]" alt="gcp">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/openshift.png" class="h-[50px] w-[50px]" alt="openshift">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/icons8-ibm-96.png" class="h-[50px] w-[50px]" alt="ibm">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/heroku.png" class="h-[50px] w-[50px]" alt="heroku">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 60%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">60%</span>
             </div>
         </div>
         <div class="mb-10 m-10 justify-center" *ngIf="showStack4">
-            <!-- devops -->
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/github.png" class="h-[50px] w-[50px]" alt="github">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
+            <div class="stack-toolkit">
+                <h4>{{ t('devops') }}</h4>
+                <p>{{ t('devopsText') }}</p>
+                <div class="devops-pipeline" aria-label="CI/CD pipeline">
+                    <span>CODE</span><i></i><span>BUILD</span><i></i><span>TEST</span><i></i><span>DEPLOY</span>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/gitlab.png" class="h-[50px] w-[50px]" alt="gitlab">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
+                <div class="ai-toolkit-grid">
+                    <article class="ai-tool-card"><img src="./assets/img/github.png" alt="GitHub"><span>GitHub</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/gitlab.png" alt="GitLab"><span>GitLab</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/docker.png" alt="Docker"><span>Docker</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/jenkins.png" alt="Jenkins"><span>Jenkins</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/azure-devops.png" alt="Azure DevOps"><span>Azure DevOps</span></article>
                 </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/docker.png" class="h-[50px] w-[50px]" alt="docker">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 90%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">90%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/jenkins.png" class="h-[50px] w-[50px]" alt="jenkins">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
-            </div>
-            <div class="flex justify-between p-2">
-                <img src="./assets/img/azure-devops.png" class="h-[50px] w-[50px]" alt="azuredev">
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
-                    <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
-                </div>
-                <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
             </div>
         </div>
         <div class="mb-10 m-10 justify-center" *ngIf="showStack5">
             <!-- ai -->
-            <div class="flex justify-between p-2">
+            <div class="ai-toolkit">
+                <h4>{{ t('aiTitle') }}</h4>
+                <p>{{ t('aiText') }}</p>
+                <div class="ai-orchestration" aria-label="AI orchestration animation">
+                    <div class="ai-orchestration-row"><span class="ai-node ai-node-main">PROMPT</span><i></i><span class="ai-node">CODEX</span><i></i><span class="ai-node">CLAUDE</span></div>
+                    <div class="ai-orchestration-branch"><span>SKILLS</span><span>MCP</span><span>APPS</span></div>
+                    <div class="ai-orchestration-result"><b>●</b><span>ENGINEERING OUTPUT</span><em>READY</em></div>
+                </div>
+                <div class="ai-toolkit-grid">
+                    <article class="ai-tool-card"><img src="https://openai.com/favicon.ico" alt="Codex by OpenAI"><span>{{ t('aiCodex') }}</span></article>
+                    <article class="ai-tool-card"><img src="https://cdn.simpleicons.org/anthropic/d97757" alt="Claude by Anthropic"><span>{{ t('aiClaude') }}</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/skills.svg" alt="Skills"><span>{{ t('aiSkills') }}</span></article>
+                    <article class="ai-tool-card"><img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mcp-model-context-protocol/default.svg" alt="Model Context Protocol"><span>{{ t('aiMcp') }}</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/apps.svg" alt="Apps"><span>{{ t('aiApps') }}</span></article>
+                </div>
+            </div>
+            <div *ngIf="false" class="flex justify-between p-2">
                 <img src="./assets/img/chatgpt.png" class="h-[50px] w-[50px]" alt="openai">
                 <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
                     <div class="bg-blue-600 h-2.5 rounded-full " style="width: 80%"></div>
                 </div>
                 <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">80%</span>
             </div>
-            <div class="flex justify-between p-2">
+            <div *ngIf="false" class="flex justify-between p-2">
                 <img src="./assets/img/github-copilot.svg" class="h-[50px] w-[50px]" alt="gitcopilot">
                 <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
                     <div class="bg-blue-600 h-2.5 rounded-full " style="width: 70%"></div>
                 </div>
                 <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">70%</span>
             </div>
-            <div class="flex justify-between p-2">
+            <div *ngIf="false" class="flex justify-between p-2">
                 <img src="./assets/img/windows-copilot.png" class="h-[50px] w-[50px]" alt="wincopilot">
                 <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-5 m-2">
                     <div class="bg-blue-600 h-2.5 rounded-full " style="width: 60%"></div>
@@ -353,15 +317,72 @@
                 <span class="text-sm font-medium text-blue-700 dark:text-white mt-4">60%</span>
             </div>
         </div>
-        <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
-            Last projects
+        <div class="mb-10 m-10 justify-center" *ngIf="showStack6">
+            <div class="stack-toolkit">
+                <h4>{{ t('observability') }}</h4>
+                <p>{{ t('observabilityText') }}</p>
+                <div class="observability-dashboard" aria-label="Observability dashboard">
+                    <div class="observability-metric"><span>EVENTS</span><strong>24.8K</strong><em class="metric-up">+18%</em></div>
+                    <div class="observability-metric"><span>LATENCY</span><strong>128ms</strong><em class="metric-down">-24%</em></div>
+                    <div class="observability-metric"><span>UPTIME</span><strong>99.98%</strong><em class="metric-up">STABLE</em></div>
+                    <div class="observability-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                </div>
+                <div class="ai-toolkit-grid">
+                    <article class="ai-tool-card"><img src="https://cdn.simpleicons.org/newrelic/1ce783" alt="New Relic"><span>New Relic</span></article>
+                    <article class="ai-tool-card"><img src="https://cdn.simpleicons.org/datadog/632ca6" alt="Datadog"><span>Datadog</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/kibana.svg" alt="Kibana"><span>Kibana</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/grafana.svg" alt="Grafana"><span>Grafana</span></article>
+                    <article class="ai-tool-card"><img src="./assets/img/cloudwatch.svg" alt="Amazon CloudWatch"><span>CloudWatch</span></article>
+                </div>
+            </div>
+        </div>
+        <h3 class="scroll-reveal text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
+            {{ t('impactTitle') }}
         </h3>
-        <div class="my-12 flex flex-col items-center justify-center w-[90%] m-auto lg:flex-col">
+        <section class="scroll-reveal impact-grid" [attr.aria-label]="t('impactTitle')">
+            <article class="impact-card">
+                <span class="impact-icon"><i class="bi bi-stars"></i></span>
+                <h4>{{ t('impactAi') }}</h4>
+                <p>{{ t('impactAiText') }}</p>
+                <div class="impact-visual impact-ai-visual" aria-hidden="true"><span>PROMPT</span><i></i><span>AI</span><i></i><b>SHIP</b></div>
+            </article>
+            <article class="impact-card">
+                <span class="impact-icon"><i class="bi bi-cloud-check"></i></span>
+                <h4>{{ t('impactCloud') }}</h4>
+                <p>{{ t('impactCloudText') }}</p>
+                <div class="impact-visual impact-cloud-visual" aria-hidden="true"><span>API</span><i></i><span>λ</span><i></i><b>DATA</b></div>
+            </article>
+            <article class="impact-card">
+                <span class="impact-icon"><i class="bi bi-diagram-3"></i></span>
+                <h4>{{ t('impactSystems') }}</h4>
+                <p>{{ t('impactSystemsText') }}</p>
+                <div class="impact-visual impact-systems-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i><i></i></div>
+            </article>
+            <article class="impact-card">
+                <span class="impact-icon"><i class="bi bi-braces"></i></span>
+                <h4>{{ t('impactArchitecture') }}</h4>
+                <p>{{ t('impactArchitectureText') }}</p>
+                <div class="impact-visual impact-api-visual" aria-hidden="true"><span>GET</span><b>/api</b><i>200 OK</i></div>
+            </article>
+            <article class="impact-card">
+                <span class="impact-icon"><i class="bi bi-activity"></i></span>
+                <h4>{{ t('impactObservability') }}</h4>
+                <p>{{ t('impactObservabilityText') }}</p>
+                <div class="impact-visual impact-observability-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            </article>
+            <article class="impact-card">
+                <span class="impact-icon"><i class="bi bi-compass"></i></span>
+                <h4>{{ t('impactLeadership') }}</h4>
+                <p>{{ t('impactLeadershipText') }}</p>
+                <div class="impact-visual impact-leadership-visual" aria-hidden="true"><span>PLAN</span><i></i><span>ALIGN</span><i></i><b>DELIVER</b></div>
+            </article>
+        </section>
+        <div *ngIf="false" class="my-12 flex flex-col items-center justify-center w-[90%] m-auto lg:flex-col">
             <!-- First project -->
             <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
                 <div class="m-2">
                     <img src="./assets/img/springjpa.png" alt="firstProject" class="opacity-80 hover:opacity-100">
-                    <h4 class="font-bold my-2">Spring Micro services</h4>
+                    <h4 class="font-bold my-2">{{ t('springMicroservices') }}</h4>
                     <article class="flex justify-between">
                         <div class="flex flex-nowrap items-center">
                             <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
@@ -382,7 +403,7 @@
             <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
                 <div class="m-2">
                     <img src="./assets/img/springkafka.png" alt="secondProject" class="opacity-80 hover:opacity-100">
-                    <h4 class="font-bold my-2">Spring Kafka Integration</h4>
+                    <h4 class="font-bold my-2">{{ t('springKafka') }}</h4>
                     <article class="flex justify-between">
                         <div class="flex flex-nowrap items-center">
                             <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
@@ -400,7 +421,7 @@
             <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
                 <div class="m-2">
                     <img src="./assets/img/springsec.png" alt="thirdProject" class="opacity-80 hover:opacity-100">
-                    <h4 class="font-bold my-2">Spring Security OAuth2 Integration</h4>
+                    <h4 class="font-bold my-2">{{ t('springSecurity') }}</h4>
                     <article class="flex justify-between">
                         <div class="flex flex-nowrap items-center">
                             <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
@@ -420,7 +441,7 @@
             <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
                 <div class="m-2">
                     <img src="./assets/img/fargate-aws.png" alt="fourthProject" class="opacity-80 hover:opacity-100">
-                    <h4 class="font-bold my-2">Reverse Proxy and Integration Java with ELK Suit</h4>
+                    <h4 class="font-bold my-2">{{ t('reverseProxy') }}</h4>
                     <article class="flex justify-between">
                         <div class="flex flex-nowrap items-center">
                             <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Java</span>
@@ -442,7 +463,7 @@
             <div class="border-1 rounded-lg bg-white dark:bg-slate-700 m-5">
                 <div class="m-2">
                     <img src="./assets/img/openaifondo.jpg" alt="fifthProject" class="opacity-80 hover:opacity-100">
-                    <h4 class="font-bold my-2">GPT Console</h4>
+                    <h4 class="font-bold my-2">{{ t('gptConsole') }}</h4>
                     <article class="flex justify-between">
                         <div class="flex flex-nowrap items-center">
                             <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">Python</span>
@@ -457,10 +478,10 @@
             </div>
         </div>
     </section>
-    <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
-        Solutions
+    <h3 *ngIf="false" class="scroll-reveal text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">
+        {{ t('solutions') }}
     </h3>
-    <div class="border-1 rounded-lg m-auto" id="stack2">
+    <div *ngIf="false" class="scroll-reveal border-1 rounded-lg m-auto" id="stack2">
         <div id="default-carousel" class="relative" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="overflow-hidden relative h-[900px] rounded-lg">
@@ -545,7 +566,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
                         </path>
                     </svg>
-                    <span class="hidden">Previous</span>
+                    <span class="hidden">{{ t('previous') }}</span>
                 </span>
             </button>
             <button type="button"
@@ -558,34 +579,44 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                         </path>
                     </svg>
-                    <span class="hidden">Next</span>
+                    <span class="hidden">{{ t('next') }}</span>
                 </span>
             </button>
         </div>
     </div>
     <!-- Contacts  -->
     <h3 id="section-4"
-        class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Contact
-        me</h3>
-    <section class="flex flex-col w-[90%] m-auto">
-        <form [formGroup]="contactFormControl" class="w-[90%] md:max-w-[600px] m-auto">
+        class="scroll-reveal text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">{{ t('contact') }}</h3>
+    <section class="scroll-reveal flex flex-col w-[90%] m-auto">
+        <div class="contact-card">
+            <div class="contact-card-icon"><i class="bi bi-whatsapp"></i></div>
+            <p>{{ t('contactText') }}</p>
+            <div class="contact-terminal" aria-hidden="true"><span>ruben@portfolio:~$</span> connect --whatsapp<i>_</i></div>
+            <a class="contact-primary" href="https://wa.me/+573012892699?text=I%20would%20like%20to%20know%20about%20the%20services%20" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-whatsapp"></i>{{ t('whatsappButton') }}
+            </a>
+            <div class="contact-secondary">
+                <a href="https://www.linkedin.com/in/rubenmazo" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i>{{ t('linkedinButton') }}</a>
+                <a href="https://github.com/rubenchomazo" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>{{ t('githubButton') }}</a>
+            </div>
+        </div>
+        <form *ngIf="false" [formGroup]="contactFormControl" class="w-[90%] md:max-w-[600px] m-auto">
             <div class="py-3">
                 <input type="email" name="email" id="email" placeholder="info@exaple.com" formControlName="email"
                     class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700" />
             </div>
             <div class="py-3">
-                <input type="text" name="naame" id="name" placeholder="Name" formControlName="name"
+                <input type="text" name="naame" id="name" [placeholder]="t('namePlaceholder')" formControlName="name"
                     class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700"
                     required />
             </div>
             <div>
-                <textarea name="msg" id="msg" rows="5" placeholder="Message" formControlName="content"
+                <textarea name="msg" id="msg" rows="5" [placeholder]="t('messagePlaceholder')" formControlName="content"
                     class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 dark:text-slate-700 required"></textarea>
             </div>
             <div class="my-3">
                 <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest hover:bg-sky-300"
-                    [disabled]="!contactFormControl.valid" (click)="sendNotification()">Send
-                    Message</button>
+                    [disabled]="!contactFormControl.valid" (click)="sendNotification()">{{ t('send') }}</button>
             </div>
             <div class="bg-red-500 border-t-4  rounded-b text-slate-700 dark:text-white px-4 py-3 shadow-md"
                 role="alert" *ngIf="!contactFormControl.valid && showError">
@@ -596,7 +627,7 @@
                                 d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
                         </svg></div>
                     <div>
-                        <p class="font-bold">Error - Be sure to fill in the form correctly</p>
+                        <p class="font-bold">{{ t('formError') }}</p>
                     </div>
                 </div>
             </div>
@@ -609,7 +640,7 @@
                                 d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
                         </svg></div>
                     <div>
-                        <p class="font-bold">Send info - Success</p>
+                        <p class="font-bold">{{ t('success') }}</p>
                     </div>
                 </div>
             </div>
@@ -617,7 +648,7 @@
     </section>
     <!-- Footer -->
     <footer class="text-center mt-12 mb-5">
-        <p>Design by &#38; Developed by @Rubencho.</p>
+        <p>{{ t('design') }}</p>
         <div class="my-2">
             <a href="https://twitter.com/RubnMazo" class="bi bi-twitter hover:text-sky-500"></a>
             <a href="https://www.instagram.com/rubenchomazo/" class="bi bi-instagram hover:text-sky-500 px-2"></a>

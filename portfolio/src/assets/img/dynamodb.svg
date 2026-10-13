@@ -1,0 +1,7 @@
+<svg role="img" aria-labelledby="title" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <title id="title">Amazon DynamoDB</title>
+  <path fill="#4053A4" d="M11 15 32 5l21 10v34L32 59 11 49z"/>
+  <path fill="#527FFF" d="M32 5v54l21-10V15z"/>
+  <path fill="#FF9900" d="M11 15 32 26l21-11L32 5zm0 17 21 11 21-11v7L32 50 11 39z"/>
+  <path fill="#fff" d="M27 25h10v4H27zm0 11h10v4H27z" opacity=".9"/>
+</svg>
